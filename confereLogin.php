@@ -19,9 +19,9 @@
         $row = $result->fetch_assoc();
 
         if($row["senha"] == $senha){
-            echo "é vc parsa";
+            //inicia a sessão e manda para o index.php
         }
-        else{
+        else{ //retornara para o login.php e informar que a senha está errada
             echo "senha errada";
         }
     }else{//usuario inexistente

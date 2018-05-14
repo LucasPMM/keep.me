@@ -14,18 +14,16 @@
     $query = mysqli_query($conexao, "SELECT * FROM usuarios WHERE user='".$login."'");
 
     if(mysqli_num_rows($query) > 0){//usuario ja existente
-        echo "user already exists";
+        //retornar para a pagina anterior informando que o usuario já exite!
 
     }else{//cadastrar novo usuario
         $sql = "INSERT INTO usuarios (user, senha, email)
         VALUES ('$login', '$senha', '$email')";        
-        if ($conexao->query($sql) === TRUE) {
-            echo "New record created successfully";
+        if ($conexao->query($sql) === TRUE) {//Usuario Cadastrado com sucesso!
+            //ir para a pagina de login
         } else {
             echo "Error: " . $sql . "<br>" . $conexao->error;
         }
-        
     }
     $conexao->close();
-
 ?>
