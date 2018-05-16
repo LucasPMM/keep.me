@@ -8,3 +8,7 @@
 
   <input type="submit" value="Submit">
 </form>
+
+<?php
+  require "errors.inc";
+?>

@@ -1,4 +1,6 @@
 <?php
+    session_start();
+    require 'class_user.inc';
     $login = $_POST["user"];
     $senha = $_POST["senha"];
  
@@ -20,12 +22,23 @@
 
         if($row["senha"] == $senha){
             //inicia a sessão e manda para o index.php
+            //Coloca o usuario na sessao
+            $usuario = new User($nome_arq, $email_arq, $login_arq, $senha_arq, $carteira_arq);
+            $_SESSION['user'] = $usuario;
+            $_SESSION['login_store'] = $login;
+            $_SESSION['senha_store'] = $senha;
+            $redirect = "index.php";
+            header("location:$redirect");
         }
         else{ //retornara para o login.php e informar que a senha está errada
-            echo "senha errada";
+            $_SESSION['error'] = 1; //senha incorreta
+            $redirect = "login.php";
+            header("location:$redirect");
         }
-    }else{//usuario inexistente
-        //retornar para a pagina de login e informar que o nome de usuario está incorreto
+    }else{//retornara para o login.php e informar que o usuario é inexistente
+        $_SESSION['error'] = 2; //usuario inexistente
+        $redirect = "login.php";
+        header("location:$redirect");
     }
     $conexao->close();
 ?>
