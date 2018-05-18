@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require 'class_user.inc';
+    require '../usuario/class_user.inc';
     $login = $_POST["user"];
     $senha = $_POST["senha"];
  
@@ -27,7 +27,7 @@
             $_SESSION['user'] = $usuario;
             $_SESSION['login_store'] = $login;
             $_SESSION['senha_store'] = $senha;
-            $redirect = "index.php";
+            $redirect = "../index.php";
             header("location:$redirect");
         }
         else{ //retornara para o login.php e informar que a senha está errada

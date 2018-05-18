@@ -24,7 +24,7 @@
         VALUES ('$login', '$senha', '$email')";        
         if ($conexao->query($sql) === TRUE) {//Usuario Cadastrado com sucesso!
             //ir para a pagina de login
-            $redirect = "login.php";
+            $redirect = "../login/login.php";
             header("location:$redirect");
         } else {
             echo "Error: " . $sql . "<br>" . $conexao->error;

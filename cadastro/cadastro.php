@@ -1,3 +1,8 @@
+<?php
+  session_start();
+  require "../INCs/controleLogin.inc";
+?>
+
 <form action="insereUsuario.php"  method="post">
   User:
   <input type="text" name="user" required>
@@ -10,5 +15,5 @@
 </form>
 
 <?php
-  require "errors.inc";
+  require "../utils/errors.inc";
 ?>
