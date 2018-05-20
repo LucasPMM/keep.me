@@ -3,10 +3,10 @@
     if(Errors()){
         $resposta = Errors();
         $_SESSION['error'] = "valido";
-    ?>
-        <div>
-            <span><?=$resposta?></span>
-        </div>
-    <?php
+?>
+    <div>
+        <span><?=$resposta?></span>
+    </div>
+<?php
     }
 ?>
