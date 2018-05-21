@@ -16,17 +16,15 @@
 
     if(mysqli_num_rows($query) > 0){//existe o usuario e é necessario verificar a senha
         
-        $sql = "SELECT user, senha FROM usuarios WHERE user='".$login."'";
+        $sql = "SELECT user, senha, email FROM usuarios WHERE user='".$login."'";
         $result = $conexao->query($sql);
         $row = $result->fetch_assoc();
 
         if($row["senha"] == $senha){
             //inicia a sessão e manda para o index.php
             //Coloca o usuario na sessao
-            $usuario = new User($nome_arq, $email_arq, $login_arq, $senha_arq, $carteira_arq);
+            $usuario = new User($login, $row["email"], $senha);
             $_SESSION['user'] = $usuario;
-            $_SESSION['login_store'] = $login;
-            $_SESSION['senha_store'] = $senha;
             $redirect = "../index.php";
             header("location:$redirect");
         }
